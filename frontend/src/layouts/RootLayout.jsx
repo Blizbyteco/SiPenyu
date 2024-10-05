@@ -9,7 +9,8 @@ export default function RootLayout() {
   return (
     <>
       <Sidebar sidebarOpened={sidebarOpened} setSidebarOpened={setSidebarOpened} />
-      <div className="w-full">
+      <div className="w-full flex justify-between items-center px-4 py-6">
+        <h1 className="font-bold">Sipenyu</h1>
         <button onClick={() => setSidebarOpened(true)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -17,7 +18,7 @@ export default function RootLayout() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="black"
-            className="size-8"
+            className="size-6"
           >
             <path
               strokeLinecap="round"
