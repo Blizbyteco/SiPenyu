@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        "hero" : "url('src/assets/images/hero-background.svg')",
+        "hero" : "url('src/assets/images/hero-background.webp')",
         "box" : "url('src/assets/images/box-background.svg')"
       }
     },

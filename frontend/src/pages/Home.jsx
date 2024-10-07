@@ -4,7 +4,7 @@ import StatisticCard from '../components/Atoms/StatisticCard'
 export default function Home() {
   return (
     <div>
-      <section className='w-full bg-hero h-screen bg-cover bg-fixed bg-no-repeat bg-center py-6'>
+      <section className='w-full bg-hero h-screen bg-cover bg-fixed bg-no-repeat py-6'>
         <h1>Sipenyu</h1>
       </section>
       <section className='bg-box bg-cover bg-fixed bg-center min-h-screen py-12 px-4'>
