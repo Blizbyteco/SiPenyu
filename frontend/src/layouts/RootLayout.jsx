@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 export default function RootLayout() {
 
-  const [sidebarOpened, setSidebarOpened] = useState(true)
+  const [sidebarOpened, setSidebarOpened] = useState(false)
 
   return (
     <>
