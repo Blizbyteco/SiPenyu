@@ -3,7 +3,7 @@ import React from 'react'
 export default function MacTerminal({children}) {
 
   return (
-    <div className='rounded-md overflow-hidden w-ful h-full'>
+    <div className='rounded-md overflow-hidden w-full'>
         <div className='flex gap-x-2 bg-[#222222] w-full p-3'>
           <div className='bg-red-500 rounded-full size-3'></div>
           <div className='bg-yellow-500 rounded-full size-3'></div>
