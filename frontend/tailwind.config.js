@@ -16,11 +16,11 @@ export default {
       backgroundColor: {
         'primary' : '#4E46B4',
         'secondary' : '#40A69F',
-        'gray' : '#F5F5F5'
+        'gray-custom' : '#F5F5F5'
       },
 
       textColor: {
-        'gray' : '#1F1F1F'
+        'gray-custom' : '#1F1F1F'
       }
     },
   },
