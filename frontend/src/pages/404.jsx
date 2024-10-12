@@ -1,11 +1,10 @@
-import React from "react";
-import NotFoundIcon from "../assets/img/illustrasi/404.webp";
+import React from "react";;
 import { Link } from "react-router-dom";
 
 export default function NotFoundPage() {
   return (
     <div className="min-h-screen bg-primary px-6 text-white">
-      <img src={NotFoundIcon} alt="icon" />
+      <img src="/img/illustrasi/404.webp" alt="icon" />
       <h1 className="text-4xl font-semibold">
         Maaf, halaman yang Anda cari tidak ditemukan
       </h1>

@@ -10,7 +10,7 @@ export default function RootLayout() {
     <>
       <Sidebar sidebarOpened={sidebarOpened} setSidebarOpened={setSidebarOpened} />
       <div className="w-full flex justify-between items-center px-4 py-6">
-        <h1 className="font-bold">Sipenyu</h1>
+        <h1 className="font-bold">Sipenyu Muda</h1>
         <button onClick={() => setSidebarOpened(true)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"

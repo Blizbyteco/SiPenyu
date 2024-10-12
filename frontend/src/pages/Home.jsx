@@ -1,8 +1,6 @@
 import React from "react";
 import StatisticCard from "../components/Atoms/StatisticCard";
 import MacTerminal from "../components/MacTerminal";
-import BubbleRight from "../assets/img/illustrasi/bubble_right.webp";
-import BubbleLeft from "../assets/img/illustrasi/bubble_left.webp";
 import { Line } from "react-chartjs-2";
 
 import {
@@ -70,14 +68,10 @@ export default function Home() {
   return (
     <div>
       {/* hero section */}
-      <section className="max-w-full w-full bg-hero h-screen bg-cover bg-fixed bg-no-repeat py-6 flex flex-col justify-center items-center text-4xl font-semibold space-y-2 ">
-        <h1>Selamat Datang</h1>
-        <div className="flex items-center gap-x-4">
-          <img className="w-16" src={BubbleLeft} alt="left" />
-          <h1>di</h1>
-          <img className="w-16" src={BubbleRight} alt="right" />
-        </div>
-        <h1>Aplikasi Si Penyu Muda</h1>
+      <section className="w-full bg-hero h-screen bg-cover bg-fixed bg-no-repeat py-6 flex flex-col justify-center items-center text-4xl font-semibold space-y-2 px-4">
+        <h1>
+        <span className="text-secondary">Sistem</span> pendataan kepemudaan kabupaten <span className="text-primary">pamekasan</span>
+        </h1>
       </section>
 
       {/* statistic section */}
@@ -192,6 +186,14 @@ export default function Home() {
             </div>
           </MacTerminal>
         </div>
+      </section>
+
+      <section className="py-12 px-4 min-h-screen max-w-full w-full">
+          <h1 className="text-3xl font-semibold">Tentang Si Penyu Muda</h1>
+          <p className="">
+          Di era Society 5.0 perubahan didasarkan adanya big data yang dapat dikembangkan secara virtual agar data diakses dan dapat dijadikan solusi untuk pengambilan keputusan secara tepat dan efektif.
+          Melalui Si Penyu Muda akan menghadirkan data Pemuda Pamekasan setiap tahunnya yang akan ditampilkan di website Dinas Kepemudaan Olahraga dan Kepemudaan Kabupaten Pamekasan.
+          </p>
       </section>
     </div>
   );
