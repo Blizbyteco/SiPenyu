@@ -141,7 +141,7 @@ export default function Home() {
             </div>
 
             <div className="overflow-x-auto">
-              <table className="w-max table-auto mt-6 text-sm border border-gray-300">
+              <table className="table-auto w-full mt-6 text-sm border border-gray-300">
                 <thead>
                   <tr>
                     <th className="text-center border-r border-l  border-gray-400 bg-gray-300 py-2 px-4 font-semibold">
@@ -190,7 +190,7 @@ export default function Home() {
 
       <section className="py-12 px-4 min-h-[80vh] max-w-full w-full">
           <h1 className="text-3xl font-semibold">Tentang Si Penyu Muda</h1>
-          <div className="w-1/2 rounded-md h-[5px] bg-secondary mt-6"></div>
+          <div className="w-1/4 rounded-md h-[5px] bg-secondary mt-6"></div>
           <p className="mt-8">
           Di era Society 5.0 perubahan didasarkan adanya big data yang dapat dikembangkan secara virtual agar data diakses dan dapat dijadikan solusi untuk pengambilan keputusan secara tepat dan efektif.
           Melalui Si Penyu Muda akan menghadirkan data Pemuda Pamekasan setiap tahunnya yang akan ditampilkan di website Dinas Kepemudaan Olahraga dan Kepemudaan Kabupaten Pamekasan.
@@ -217,7 +217,7 @@ export default function Home() {
           </div>
         </MacTerminal>
         <MacTerminal>
-          <div className="py-4 text-gray-500 text-sm text-left space-y-2">
+          <div className="py-4 text-gray-500 text-sm text-left space-y-4">
               <p>WhatsApp : +62 5589 55488 55</p>
               <p>Email    : statistik@pamekasankab.go.id</p>
               <p>Lokasi   : Jl. Darma No.12, Taman, Lawangan Daya, Kec. Pademawu, Kabupaten Pamekasan, Jawa Timur 69323</p>
