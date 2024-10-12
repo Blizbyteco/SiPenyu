@@ -188,13 +188,48 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-12 px-4 min-h-screen max-w-full w-full">
+      <section className="py-12 px-4 min-h-[80vh] max-w-full w-full">
           <h1 className="text-3xl font-semibold">Tentang Si Penyu Muda</h1>
-          <p className="">
+          <div className="w-1/2 rounded-md h-[5px] bg-secondary mt-6"></div>
+          <p className="mt-8">
           Di era Society 5.0 perubahan didasarkan adanya big data yang dapat dikembangkan secara virtual agar data diakses dan dapat dijadikan solusi untuk pengambilan keputusan secara tepat dan efektif.
           Melalui Si Penyu Muda akan menghadirkan data Pemuda Pamekasan setiap tahunnya yang akan ditampilkan di website Dinas Kepemudaan Olahraga dan Kepemudaan Kabupaten Pamekasan.
           </p>
       </section>
+
+      <section className="w-full min-h-screen bg-secondary text-white text-center px-4 py-12">
+        <h1 className="font-semibold text-4xl text-center">Contact</h1>
+        <p className="mt-8 mb-12">
+        Pengguna  Si Penyu Muda Kabupaten Pamekasan dapat mengirimkan saran, masukan, kritikan dan informasi lainnya yang dapat membantu dalam pengembangan Si Penyu Muda Kabupaten Pamekasan.
+        </p>
+
+        <div className="space-y-6">
+
+        <MacTerminal>
+          <div className="space-y-6 py-4">
+            <p className="text-gray-500 text-left text-sm">Pesan ini akan otomatis di kirim ke whatsapp, pastikan anda sudah meng-install aplikasi whatsapp
+            </p>
+            <input type="text" className="bg-gray-200 w-full rounded-md py-3 px-6 text-sm text-gray-600" placeholder="nama" />
+            <input type="text" className="bg-gray-200 w-full rounded-md py-3 px-6 text-sm text-gray-600" placeholder="alamat" />
+            <input type="text" className="bg-gray-200 w-full rounded-md py-3 px-6 text-sm text-gray-600" placeholder="usaha" />
+            <textarea type="text" className="bg-gray-200 w-full rounded-md py-3 px-6 text-sm text-gray-600" placeholder="pesan" />
+            <button className="w-full py-2 rounded-md bg-secondary text-center text-white text-sm">Kirim</button>
+          </div>
+        </MacTerminal>
+        <MacTerminal>
+          <div className="py-4 text-gray-500 text-sm text-left space-y-2">
+              <p>WhatsApp : +62 5589 55488 55</p>
+              <p>Email    : statistik@pamekasankab.go.id</p>
+              <p>Lokasi   : Jl. Darma No.12, Taman, Lawangan Daya, Kec. Pademawu, Kabupaten Pamekasan, Jawa Timur 69323</p>
+          </div>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3958.6998424832036!2d113.4927466!3d-7.1606578!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd77deedfa7e05b%3A0xf65af701caa3372c!2sKantor%20DISPORAPAR%20Kab.%20Pamekasan!5e0!3m2!1sen!2sid!4v1728703419630!5m2!1sen!2sid" width="600" height="450" className="border-none rounded-md max-w-full mt-4" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </MacTerminal>
+        </div>
+      </section>
+
+      <footer className="py-6">
+                <h2 className="text-sm text-gray-400 text-center">© 2024  Si Penyu Muda. All rights reserved.</h2>
+      </footer>
     </div>
   );
 }
