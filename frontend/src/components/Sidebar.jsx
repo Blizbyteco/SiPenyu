@@ -5,7 +5,8 @@ export default function Sidebar({sidebarOpened, setSidebarOpened}) {
 
   const sidebarVariants = {
     hidden: {
-      y: '-150%',
+      x: '-150%',
+      opacity: 0,
       transition: {
         duration: 0.5,
         ease: easeOut
@@ -13,7 +14,8 @@ export default function Sidebar({sidebarOpened, setSidebarOpened}) {
     },
 
     show: {
-      y: 0,
+      x: 0,
+      opacity: 1,
       transition: {
         duration: 0.5,
         ease: easeIn
