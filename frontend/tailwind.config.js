@@ -20,7 +20,9 @@ export default {
       },
 
       textColor: {
-        'gray-custom' : '#1F1F1F'
+        'gray-custom' : '#1F1F1F',
+        'primary' : '#4E46B4',
+        'secondary' : '#40A69F',
       }
     },
   },
