@@ -88,7 +88,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-12 px-4 min-h-screen max-w-full w-full">
+      <section className="py-12 min-h-screen max-w-full w-full">
         <h1 className="text-3xl text-center font-semibold">
           Visualisasi & Pencarian Data Kepemudaan
         </h1>
