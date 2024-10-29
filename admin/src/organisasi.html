@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      SiPenyu Dashboard
+    </title>
+  </head>
+
+  <body
+    x-data="{ page: 'formElements', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }"
+    x-init="
+          darkMode = JSON.parse(localStorage.getItem('darkMode'));
+          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))"
+    :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}"
+  >
+   <!-- ===== Preloader Start ===== -->
+   <include src="./partials/preloader.html"></include>
+   <!-- ===== Preloader End ===== -->
+
+   <!-- ===== Page Wrapper Start ===== -->
+   <div class="flex h-screen overflow-hidden">
+     <!-- ===== Sidebar Start ===== -->
+     <include src="./partials/sidebar.html"></include>
+     <!-- ===== Sidebar End ===== -->
+
+     <!-- ===== Content Area Start ===== -->
+     <div
+       class="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden"
+     >
+       <!-- ===== Header Start ===== -->
+       <include src="./partials/header.html" />
+       <!-- ===== Header End ===== -->
+
+       <main>
+        <div class="mx-auto max-w-screen-2xl p-4 md:p-6 2xl:p-10">
+            <!-- Breadcrumb Start -->
+            <div
+              class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"
+  
+            >
+              <h2 class="text-title-md2 font-bold text-black dark:text-white">
+                Data Organisasi
+              </h2>
+
+              <nav>
+                <ol class="flex items-center gap-2">
+                  <li>
+                    <a class="font-medium" href="index.html">Dashboard /</a>
+                  </li>
+                  <li class="font-medium text-primary">Data Organisasi</li>
+                </ol>
+              </nav>
+            </div>
+            <!-- Breadcrumb End -->
+
+            <div class="w-full flex justify-end mb-6">
+                <a href="organisasiDetail.html" class="px-4 bg-boxdark text-white rounded-md py-2">Tambah data</a>
+            </div>
+
+<div
+  class="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark"
+>
+
+  <div class="flex flex-col">
+    <div
+      class="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-5"
+    >
+      <div class="p-2.5 xl:p-5">
+        <h5 class="text-sm font-medium uppercase xsm:text-base">Nama Organisasi</h5>
+      </div>
+      <div class="p-2.5 text-center xl:p-5">
+        <h5 class="text-sm font-medium uppercase xsm:text-base">Nama Ketua Organisasi</h5>
+      </div>
+      <div class="p-2.5 text-center xl:p-5">
+        <h5 class="text-sm font-medium uppercase xsm:text-base">Alamat</h5>
+      </div>
+      <div class="hidden p-2.5 text-center sm:block xl:p-5">
+        <h5 class="text-sm font-medium uppercase xsm:text-base">Jumlah Anggota</h5>
+      </div>
+      <div class="hidden p-2.5 text-center sm:block xl:p-5">
+        <h5 class="text-sm font-medium uppercase xsm:text-base">Aksi</h5>
+      </div>
+    </div>
+
+    <div
+      class="grid grid-cols-3 border-b border-stroke dark:border-strokedark sm:grid-cols-5"
+    >
+      <div class="flex items-center gap-3 p-2.5 xl:p-5">
+        <p class="hidden font-medium text-black dark:text-white sm:block">
+          KNPI
+        </p>
+      </div>
+
+      <div class="flex items-center justify-center p-2.5 xl:p-5">
+        <p class="font-medium text-black dark:text-white">Hosnan</p>
+      </div>
+
+      <div class="flex items-center justify-center p-2.5 xl:p-5">
+        <p class="font-medium text-black dark:text-white">Jl. Jokotole ( Wamiramart )</p>
+      </div>
+
+      <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
+        <p class="font-medium text-black dark:text-white">40</p>
+      </div>
+
+      <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
+        <p class="font-medium text-meta-5 underline hover:cursor-pointer">Download</p>
+      </div>
+    </div>
+
+   
+  </div>
+</div>
+</div>
+</main>
+</body>
+</html>
