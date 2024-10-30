@@ -18,8 +18,9 @@ const Breadcrumb = ({ pageName, paths }: BreadcrumbProps) => {
             </Link>
           </li>
           {paths?.map(path => (
-            <li className="font-medium text-primary">{path}</li>
+            <li className="font-medium">{path}</li>
           ))}
+          <li className='font-medium text-primary'>{pageName}</li>
         </ol>
       </nav>
     </div>

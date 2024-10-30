@@ -5,7 +5,6 @@ import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
 import SignIn from './pages/Authentication/SignIn';
 import SignUp from './pages/Authentication/SignUp';
-import Calendar from './pages/Calendar';
 import Chart from './pages/Chart';
 import FormElements from './pages/Form/FormElements';
 import FormLayout from './pages/Form/FormLayout';
@@ -16,6 +15,8 @@ import Alerts from './pages/UiElements/Alerts';
 import Buttons from './pages/UiElements/Buttons';
 import DefaultLayout from './layout/DefaultLayout';
 import Dashboard from './pages/Dashboard'
+import DataPendidikan from './pages/DataPendidikan';
+import PendidikanDetail from './pages/Details/PendidikanDetail';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -44,14 +45,24 @@ function App() {
           }
         />
         <Route
-          path="/calendar"
+          path="/education"
           element={
             <>
-              <PageTitle title="Calendar | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Calendar />
+              <PageTitle title="SiPenyuMuda | Data Pendidikan" />
+              <DataPendidikan />
             </>
           }
         />
+         <Route
+            path="/education/addData"
+            element={
+              <>
+                <PageTitle title="SiPenyuMuda | Data Pendidikan" />
+                <PendidikanDetail />
+              </>
+            }
+          />
+         
         <Route
           path="/profile"
           element={
