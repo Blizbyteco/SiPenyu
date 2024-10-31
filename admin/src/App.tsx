@@ -3,21 +3,12 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 
 import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
-import SignIn from './pages/Authentication/SignIn';
-import SignUp from './pages/Authentication/SignUp';
-import Chart from './pages/Chart';
-import FormElements from './pages/Form/FormElements';
-import FormLayout from './pages/Form/FormLayout';
-import Profile from './pages/Profile';
-import Settings from './pages/Settings';
-import Tables from './pages/Tables';
-import Alerts from './pages/UiElements/Alerts';
-import Buttons from './pages/UiElements/Buttons';
 import DefaultLayout from './layout/DefaultLayout';
 import Dashboard from './pages/Dashboard'
 import DataPendidikan from './pages/DataPendidikan';
 import PendidikanDetail from './pages/Details/PendidikanDetail';
 import OrganizationData from './pages/OrganizationData';
+import OrganizationDetail from './pages/Details/OrganizationDetail';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -70,6 +61,15 @@ function App() {
             <>
               <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <OrganizationData />
+            </>
+          }
+        />
+        <Route
+          path="/organization/addData"
+          element={
+            <>
+              <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <OrganizationDetail />
             </>
           }
         />
