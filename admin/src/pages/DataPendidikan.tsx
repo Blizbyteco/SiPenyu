@@ -10,7 +10,7 @@ function DataPendidikan() {
       <div className="flex justify-end">
         <Link to="addData/" className="py-2 px-4 rounded-md bg-primary text-white mt-2" >Tambah Data</Link>
       </div>
-      <TableThree columns={["Testing"]} />
+      <TableThree columns={["Nama", "Tempat Tanggal Lahir", "Alamat Terakhir", "Pendidika Terakhir"]} data={[["Alvin Setya Pranata", "Pamekasan, 24 April 2005", "Jl. Jembatan Baru, no 85", "SMK/SMA Sederajat"]]}/>
     </div>
   )
 }

@@ -17,7 +17,6 @@ function Dashboard() {
     
     <ChartThree />
 
-    <TableThree />
     </div>
   )
 }
