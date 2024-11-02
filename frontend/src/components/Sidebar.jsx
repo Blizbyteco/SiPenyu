@@ -51,7 +51,7 @@ export default function Sidebar({sidebarOpened, setSidebarOpened}) {
       </div>
 
       <div className="w-full h-full text-white text-4xl flex flex-col justify-center items-center gap-y-12">
-          <Link to="/beranda" className="hover:cursor-pointer">Beranda</Link>
+          <Link to="/" className="hover:cursor-pointer">Beranda</Link>
           <Link to="/statistik" className="hover:cursor-pointer">Statistik</Link>
           <Link to="/data" className="hover:cursor-pointer">Data</Link>
           <Link to="/about" className="hover:cursor-pointer">Tentang</Link>
