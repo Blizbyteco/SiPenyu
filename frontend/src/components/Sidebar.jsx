@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { easeIn, easeOut, motion } from 'framer-motion'
+import { Link } from "react-router-dom";
 
 export default function Sidebar({sidebarOpened, setSidebarOpened}) {
 
@@ -50,11 +51,12 @@ export default function Sidebar({sidebarOpened, setSidebarOpened}) {
       </div>
 
       <div className="w-full h-full text-white text-4xl flex flex-col justify-center items-center gap-y-12">
-          <h2 className="hover:cursor-pointer">Home</h2>
-          <h2 className="hover:cursor-pointer">Data</h2>
-          <h2 className="hover:cursor-pointer">Chart</h2>
-          <h2 className="hover:cursor-pointer">About</h2>
-          <h2 className="hover:cursor-pointer">contact</h2>
+          <Link to="/beranda" className="hover:cursor-pointer">Beranda</Link>
+          <Link to="/statistik" className="hover:cursor-pointer">Statistik</Link>
+          <Link to="/data" className="hover:cursor-pointer">Data</Link>
+          <Link to="/about" className="hover:cursor-pointer">Tentang</Link>
+          <Link to="/contact" className="hover:cursor-pointer">Kontak</Link>
+          <Link to="/downloads" className="hover:cursor-pointer">Download</Link>
       </div>
     </motion.div>
   );

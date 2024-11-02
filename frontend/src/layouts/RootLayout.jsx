@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 export default function RootLayout() {
 
   const [sidebarOpened, setSidebarOpened] = useState(false)
+  const location = useLocation()
+
+  useEffect(() => {
+    setSidebarOpened(false)
+  }, [location])
 
   return (
     <>

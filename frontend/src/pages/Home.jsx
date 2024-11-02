@@ -84,14 +84,14 @@ export default function Home() {
   return (
     <div>
       {/* hero section */}
-      <section className="w-full bg-hero h-screen bg-cover bg-fixed bg-no-repeat py-6 flex flex-col justify-center items-center text-4xl font-semibold space-y-2 px-4">
+      <section id="beranda" className="w-full bg-hero h-screen bg-cover bg-fixed bg-no-repeat py-6 flex flex-col justify-center items-center text-4xl font-semibold space-y-2 px-4">
         <h1>
         <span className="text-secondary">Sistem</span> pendataan kepemudaan kabupaten <span className="text-primary">pamekasan</span>
         </h1>
       </section>
 
       {/* statistic section */}
-      <section className="bg-grid-mobile bg-cover bg-fixed bg-center min-h-screen py-12 px-4">
+      <section id="statistik" className="bg-grid-mobile bg-cover bg-fixed bg-center min-h-screen py-12 px-4">
         <h1 className="text-3xl text-center font-semibold">
           Statistik Pemuda Kabupaten Pamekasan
         </h1>
@@ -104,7 +104,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-12 min-h-screen max-w-full w-full">
+      <section id="data" className="py-12 min-h-screen max-w-full w-full">
         <h1 className="text-3xl text-center font-semibold">
           Visualisasi & Pencarian Data Kepemudaan
         </h1>
@@ -175,9 +175,6 @@ export default function Home() {
                     <th className="text-center border-r border-l  border-gray-400 bg-gray-300 py-2 px-4 font-semibold">
                       Tahun
                     </th>
-                    <th className="border-r border-l border-gray-300 bg-gray-300 py-2 px-4 font-semibold">
-                      Aksi
-                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -187,9 +184,6 @@ export default function Home() {
                     <td className="border-l border-r border-gray-300 text-center py-2 px-4">Mahasiswa</td>
                     <td className="border-l border-r border-gray-300 text-center py-2 px-4">Pelajar Sekolah</td>
                     <td className="border-l border-r border-gray-300 text-center py-2 px-4">2024</td>
-                    <td className="border-l border-r border-gray-300 text-center py-2 px-4">
-                      <button className="bg-secondary text-white p-2">Download</button>
-                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -204,7 +198,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-12 px-4 min-h-[80vh] max-w-full w-full">
+      <section id="about" className="py-12 px-4 min-h-[80vh] max-w-full w-full">
           <h1 className="text-3xl font-semibold">Tentang Si Penyu Muda</h1>
           <div className="w-1/4 rounded-md h-[5px] bg-secondary mt-6"></div>
           <p className="mt-8">
@@ -213,7 +207,7 @@ export default function Home() {
           </p>
       </section>
 
-      <section className="w-full min-h-screen bg-secondary text-white text-center px-4 py-12">
+      <section id="contact" className="w-full min-h-screen bg-secondary text-white text-center px-4 py-12">
         <h1 className="font-semibold text-4xl text-center">Contact</h1>
         <p className="mt-8 mb-12">
         Pengguna  Si Penyu Muda Kabupaten Pamekasan dapat mengirimkan saran, masukan, kritikan dan informasi lainnya yang dapat membantu dalam pengembangan Si Penyu Muda Kabupaten Pamekasan.
