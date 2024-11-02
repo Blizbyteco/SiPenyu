@@ -52,10 +52,10 @@ export default function Sidebar({sidebarOpened, setSidebarOpened}) {
 
       <div className="w-full h-full text-white text-4xl flex flex-col justify-center items-center gap-y-12">
           <Link to="/" className="hover:cursor-pointer">Beranda</Link>
-          <Link to="/statistik" className="hover:cursor-pointer">Statistik</Link>
-          <Link to="/data" className="hover:cursor-pointer">Data</Link>
-          <Link to="/about" className="hover:cursor-pointer">Tentang</Link>
-          <Link to="/contact" className="hover:cursor-pointer">Kontak</Link>
+          <a href="/#statistik" className="hover:cursor-pointer">Statistik</a>
+          <a href="/#data" className="hover:cursor-pointer">Data</a>
+          <a href="/#about" className="hover:cursor-pointer">Tentang</a>
+          <a href="/#contact" className="hover:cursor-pointer">Kontak</a>
           <Link to="/downloads" className="hover:cursor-pointer">Download</Link>
       </div>
     </motion.div>
