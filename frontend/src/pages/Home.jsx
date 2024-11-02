@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import StatisticCard from "../components/Atoms/StatisticCard";
 import MacTerminal from "../components/MacTerminal";
 import { Line } from "react-chartjs-2";
+import YouthIcon from "../components/SVG/YouthIcon";
 
 import {
   Chart as ChartJS,
@@ -67,6 +68,7 @@ export default function Home() {
   };
 
 
+
   // Refs
 
   const senderName = useRef()
@@ -97,10 +99,7 @@ export default function Home() {
         </h1>
 
         <div className="mt-16  space-y-12  ">
-          <StatisticCard />
-          <StatisticCard />
-          <StatisticCard />
-          <StatisticCard />
+          <StatisticCard title="Jumlah Pemuda" icon={<YouthIcon />} value="98.030/161.563 Pemuda" />
         </div>
       </section>
 
