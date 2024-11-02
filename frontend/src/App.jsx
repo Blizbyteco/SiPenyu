@@ -11,8 +11,8 @@ export default function App() {
       <Routes>
         <Route path='/' element={<RootLayout />}>
             <Route path='/' element={<Home />} />
-        </Route>
         <Route path='/downloads' element={<Resources />} />
+        </Route>
         <Route path='*' element={<NotFoundPage />}/>
       </Routes>
     </BrowserRouter>
