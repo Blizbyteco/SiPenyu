@@ -1,4 +1,4 @@
-export default function StatisticCard({title, logo, value}) {
+export default function StatisticCard({title, icon, value}) {
   return (
     <div className="bg-white rounded-md overflow-hidden">
       <div className="w-full bg-orange-400 h-[10px]"></div>
@@ -6,9 +6,8 @@ export default function StatisticCard({title, logo, value}) {
         <h2 className="font-semibold text-lg">{title}</h2>
 
         <div className="flex items-center mt-4 gap-x-4">
-          {logo}    
+          {icon}    
             <p className="text-gray-500">{value}</p>
-          
         </div>
       </div>
     </div>
