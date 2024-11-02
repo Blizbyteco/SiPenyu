@@ -86,7 +86,7 @@ export default function Home() {
       {/* hero section */}
       <section id="beranda" className="w-full bg-hero h-screen bg-cover bg-fixed bg-no-repeat py-6 flex flex-col justify-center items-center text-4xl font-semibold space-y-2 px-4">
         <h1>
-        <span className="text-secondary">Sistem</span> pendataan kepemudaan kabupaten <span className="text-primary">pamekasan</span>
+        <span className="text-secondary">Sistem</span> informasi penyusunan data <span className="text-primary">kepemudaan</span>
         </h1>
       </section>
 
