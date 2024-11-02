@@ -236,10 +236,6 @@ export default function Home() {
         </MacTerminal>
         </div>
       </section>
-
-      <footer className="py-6">
-                <h2 className="text-sm text-gray-400 text-center">© 2024  Si Penyu Muda. All rights reserved.</h2>
-      </footer>
     </div>
   );
 }
