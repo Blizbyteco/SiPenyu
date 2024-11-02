@@ -141,6 +141,26 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   Data Organisasi
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  to="/organization"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes('kepemudaan') && 'bg-graydark dark:bg-meta-4'
+                  }`}
+                >
+                  Data Kepemudaan
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/organization"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes('kepemudaan') && 'bg-graydark dark:bg-meta-4'
+                  }`}
+                >
+                  Data Kepemudaan
+                </NavLink>
+              </li>
               {/* <!-- Menu Item Profile --> */}
 
             </ul>

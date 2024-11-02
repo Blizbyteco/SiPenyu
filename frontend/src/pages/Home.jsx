@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import StatisticCard from "../components/Atoms/StatisticCard";
 import MacTerminal from "../components/MacTerminal";
 import { Line } from "react-chartjs-2";
@@ -23,6 +23,7 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+import { generateMessege } from "../utils/text";
 
 export default function Home() {
   const data = {
@@ -65,6 +66,21 @@ export default function Home() {
     },
   };
 
+
+  // Refs
+
+  const senderName = useRef()
+  const senderAddress = useRef()
+  const senderBusiness = useRef()
+  const senderMessege = useRef()
+
+  // Handlers
+
+  const handleMessege = () => {
+    window.open(`https://wa.me/+6281333745705/?text=${generateMessege(senderName.current.value, senderAddress.current.value, senderBusiness.current.value, senderMessege.current.value)}`, "_blank")
+  }
+
+
   return (
     <div>
       {/* hero section */}
@@ -92,13 +108,13 @@ export default function Home() {
         <h1 className="text-3xl text-center font-semibold">
           Visualisasi & Pencarian Data Kepemudaan
         </h1>
-        <p className="mt-8 text-gray">
+        <p className="mt-8 text-gra px-4">
           Anda dapat menjelajahi data kepemudaan Pamekasan melalui grafik
           interaktif dan tabel dinamis. Gunakan fitur pencarian untuk menemukan
           data spesifik, atau filter berdasarkan kategori tertentu. Data juga
           dapat diunduh dalam format CSV untuk keperluan analisis lebih lanjut.
         </p>
-        <div className="min-h-[70vh] h-max w-full bg-data-graphic bg-cover rounded-lg p-8 mt-12 space-y-12">
+        <div className="min-h-[70vh] h-max w-full bg-data-graphic bg-cover rounded-lg py-8 px-4 mt-12 space-y-12">
           {/* window background */}
           <MacTerminal>
             <h2>Grafik berdasarkan kategori</h2>
@@ -209,11 +225,11 @@ export default function Home() {
           <div className="space-y-6 py-4">
             <p className="text-gray-500 text-left text-sm">Pesan ini akan otomatis di kirim ke whatsapp, pastikan anda sudah meng-install aplikasi whatsapp
             </p>
-            <input type="text" className="bg-gray-200 w-full rounded-md py-3 px-6 text-sm text-gray-600" placeholder="nama" />
-            <input type="text" className="bg-gray-200 w-full rounded-md py-3 px-6 text-sm text-gray-600" placeholder="alamat" />
-            <input type="text" className="bg-gray-200 w-full rounded-md py-3 px-6 text-sm text-gray-600" placeholder="usaha" />
-            <textarea type="text" className="bg-gray-200 w-full rounded-md py-3 px-6 text-sm text-gray-600" placeholder="pesan" />
-            <button className="w-full py-2 rounded-md bg-secondary text-center text-white text-sm">Kirim</button>
+            <input ref={senderName} type="text" className="bg-gray-200 w-full rounded-md py-3 px-6 text-sm text-gray-600" placeholder="nama" />
+            <input ref={senderAddress} type="text" className="bg-gray-200 w-full rounded-md py-3 px-6 text-sm text-gray-600" placeholder="alamat" />
+            <input ref={senderBusiness} type="text" className="bg-gray-200 w-full rounded-md py-3 px-6 text-sm text-gray-600" placeholder="usaha" />
+            <textarea ref={senderMessege} type="text" className="bg-gray-200 w-full rounded-md py-3 px-6 text-sm text-gray-600" placeholder="pesan" />
+            <button onClick={handleMessege} className="w-full py-2 rounded-md bg-secondary text-center text-white text-sm">Kirim</button>
           </div>
         </MacTerminal>
         <MacTerminal>
@@ -222,7 +238,7 @@ export default function Home() {
               <p>Email    : statistik@pamekasankab.go.id</p>
               <p>Lokasi   : Jl. Darma No.12, Taman, Lawangan Daya, Kec. Pademawu, Kabupaten Pamekasan, Jawa Timur 69323</p>
           </div>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3958.6998424832036!2d113.4927466!3d-7.1606578!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd77deedfa7e05b%3A0xf65af701caa3372c!2sKantor%20DISPORAPAR%20Kab.%20Pamekasan!5e0!3m2!1sen!2sid!4v1728703419630!5m2!1sen!2sid" width="600" height="450" className="border-none rounded-md max-w-full mt-4" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3958.6998424832036!2d113.4927466!3d-7.1606578!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd77deedfa7e05b%3A0xf65af701caa3372c!2sKantor%20DISPORAPAR%20Kab.%20Pamekasan!5e0!3m2!1sen!2sid!4v1728703419630!5m2!1sen!2sid" width="600" height="450" className="border-none rounded-md max-w-full mt-4" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
         </MacTerminal>
         </div>
       </section>
