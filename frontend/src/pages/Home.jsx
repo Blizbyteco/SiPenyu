@@ -25,6 +25,8 @@ ChartJS.register(
   Legend
 );
 import { generateMessege } from "../utils/text";
+import AcademicCap from "../components/SVG/AcademicCap";
+import BusinessIcon from "../components/SVG/BusinessIcon";
 
 export default function Home() {
   const data = {
@@ -98,8 +100,9 @@ export default function Home() {
           Statistik Pemuda Kabupaten Pamekasan
         </h1>
 
-        <div className="mt-16  space-y-12  ">
-          <StatisticCard title="Jumlah Pemuda" icon={<YouthIcon />} value="98.030/161.563 Pemuda" />
+        <div className="mt-16  space-y-16">
+          <StatisticCard title="Jumlah Pemuda" icon={<YouthIcon />} value="98.030 Pemuda" />
+          <StatisticCard title="Jumlah Wirausaha" icon={<BusinessIcon />} value="98.030 Pemuda" />
         </div>
       </section>
 
@@ -129,27 +132,18 @@ export default function Home() {
           {/* window background */}
 
           <MacTerminal>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-4">
+            <div className="grid grid-cols-1 gap-x-4 gap-y-4">
               <input
                 type="text"
                 className="border-[1.5px] border-gray-300 rounded-md px-4 py-2 text-gray-500 text-sm col-span-2"
                 placeholder="Search..."
               />
-
-              <select className="p-2 rounded-md">
-                <option value="8">8</option>
-              </select>
-
               <select className="p-2 rounded-md px-6 text-sm text-gray-600">
                 <option value="">Kategori</option>
               </select>
               <select className="p-2 rounded-md px-6 text-sm text-gray-600">
                 <option value="">Sub-Kategori</option>
               </select>
-              <select className="p-2 rounded-md px-6 text-sm text-gray-600">
-                <option value="8">Tahun</option>
-              </select>
-
               <button className="bg-secondary text-white rounded-md px-6 py-2 flex-1 col-span-2">
                 Cari
               </button>
