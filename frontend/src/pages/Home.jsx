@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useReducer, useRef, useState } from "react";
 import StatisticCard from "../components/Atoms/StatisticCard";
 import MacTerminal from "../components/MacTerminal";
 import { Line } from "react-chartjs-2";
@@ -25,36 +25,11 @@ ChartJS.register(
   Legend
 );
 import { generateMessege } from "../utils/text";
-import AcademicCap from "../components/SVG/AcademicCap";
 import BusinessIcon from "../components/SVG/BusinessIcon";
+import { extractDataColumnName } from "../utils/data";
+
 
 export default function Home() {
-  const data = {
-    labels: ["January", "February", "March", "April", "May", "June"],
-    datasets: [
-      {
-        label: "Sekolah",
-        data: [30, 40, 35, 50, 55, 60],
-        fill: false,
-        borderColor: "rgb(75, 192, 192)",
-        tension: 0.1,
-      },
-      {
-        label: "Putus Sekolah",
-        data: [30, 40, 35, 50, 55, 60],
-        fill: false,
-        borderColor: "rgb(75, 192, 192)",
-        tension: 0.1,
-      },
-      {
-        label: "Mahasiswa",
-        data: [30, 40, 35, 50, 55, 60],
-        fill: false,
-        borderColor: "rgb(75, 192, 192)",
-        tension: 0.1,
-      },
-    ],
-  };
 
   const options = {
     responsive: true,
@@ -68,6 +43,71 @@ export default function Home() {
       },
     },
   };
+
+
+  const [selectedAnalyticCategory, setSelectedAnalyticCategory] = useState()
+
+  const [tableData, setTableData] = useState({
+    columns: [],
+    value: [{}]
+  })
+  const [analyticData, setAnalyticData] = useState({
+    labels: [],
+    datasets: [],
+  })
+  
+  // Testing
+  useEffect(() => {
+
+    setTableData(extractDataColumnName([
+      {
+        "kecamatan": "Proppo",
+        "Kategori": "Mahasiswa",
+        "Sub kategori": "Pelajar Sekolah",
+        "Tahun": "2024"
+      },
+      {
+        "kecamatan": "Proppo",
+        "Kategori": "Mahasiswa",
+        "Sub kategori": "Pelajar Sekolah",
+        "Tahun": "2024"
+      },
+      {
+        "kecamatan": "Proppo",
+        "Kategori": "Mahasiswa",
+        "Sub kategori": "Pelajar Sekolah",
+        "Tahun": "2024"
+      },
+    ]))
+
+
+    setAnalyticData({
+      labels: ["Januari", "Februari", "Maret", "April", "May", "June"],
+      datasets: [
+        {
+          label: "Sekolah",
+          data: [30, 40, 35, 50, 55, 60],
+          fill: false,
+          borderColor: "rgb(75, 192, 192)",
+          tension: 0.1,
+        },
+        {
+          label: "Putus Sekolah",
+          data: [30, 40, 35, 50, 55, 60],
+          fill: false,
+          borderColor: "rgb(75, 192, 192)",
+          tension: 0.1,
+        },
+        {
+          label: "Mahasiswa",
+          data: [30, 40, 35, 50, 55, 60],
+          fill: false,
+          borderColor: "rgb(75, 192, 192)",
+          tension: 0.1,
+        },
+      ]
+    })
+  }, [])
 
 
 
@@ -100,7 +140,7 @@ export default function Home() {
           Statistik Pemuda Kabupaten Pamekasan
         </h1>
 
-        <div className="mt-16  space-y-16">
+        <div className="mt-16 space-y-16">
           <StatisticCard title="Jumlah Pemuda" icon={<YouthIcon />} value="98.030 Pemuda" />
           <StatisticCard title="Jumlah Wirausaha" icon={<BusinessIcon />} value="98.030 Pemuda" />
         </div>
@@ -123,11 +163,13 @@ export default function Home() {
             <select
               name="category"
               className="w-full p-2 mt-4 rounded-md bg-gray text-gray text-sm"
+              value={selectedAnalyticCategory}
+              onChange={setSelectedAnalyticCategory}
             >
-              <option value="Pelajar">Pelajar</option>
+              <option value="kepemudaan">Kepemudaan</option>
             </select>
 
-            <Line data={data} options={options} className="mt-6" />
+            <Line data={analyticData} options={options} className="mt-6" />
           </MacTerminal>
           {/* window background */}
 
@@ -136,13 +178,10 @@ export default function Home() {
               <input
                 type="text"
                 className="border-[1.5px] border-gray-300 rounded-md px-4 py-2 text-gray-500 text-sm col-span-2"
-                placeholder="Search..."
+                placeholder="Cari data bedasarkan kategori yang dipilih"
               />
-              <select className="p-2 rounded-md px-6 text-sm text-gray-600">
+              <select className="py-2 rounded-md px-4 text-sm text-gray-600">
                 <option value="">Kategori</option>
-              </select>
-              <select className="p-2 rounded-md px-6 text-sm text-gray-600">
-                <option value="">Sub-Kategori</option>
               </select>
               <button className="bg-secondary text-white rounded-md px-6 py-2 flex-1 col-span-2">
                 Cari
@@ -152,32 +191,28 @@ export default function Home() {
             <div className="overflow-x-auto">
               <table className="table-auto w-full mt-6 text-sm border border-gray-300">
                 <thead>
-                  <tr>
-                    <th className="text-center border-r border-l  border-gray-400 bg-gray-300 py-2 px-4 font-semibold">
-                      No
-                    </th>
-                    <th className="text-center border-r border-l  border-gray-400 bg-gray-300 py-2 px-4 font-semibold">
-                      Kecamatan
-                    </th>
-                    <th className="text-center border-r border-l  border-gray-400 bg-gray-300 py-2 px-4 font-semibold">
-                      Kategori
-                    </th>
-                    <th className="text-center border-r border-l  border-gray-400 bg-gray-300 py-2 px-4 font-semibold">
-                      Sub Kategori
-                    </th>
-                    <th className="text-center border-r border-l  border-gray-400 bg-gray-300 py-2 px-4 font-semibold">
-                      Tahun
-                    </th>
-                  </tr>
+                    <tr>
+                      <th className="text-center border-r border-l  border-gray-400 bg-gray-300 py-2 px-4 font-semibold">
+                        No
+                      </th>
+                    {tableData.columns.map((column, index) => (
+                      <th key={index} className="text-center border-r border-l  border-gray-400 bg-gray-300 py-2 px-4 font-semibold">
+                        {column}
+                      </th>
+                     ))}
+                    </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td className="border-l border-r border-gray-300 text-center py-2 px-4">1</td>
-                    <td className="border-l border-r border-gray-300 text-center py-2 px-4">Proppoo</td>
-                    <td className="border-l border-r border-gray-300 text-center py-2 px-4">Mahasiswa</td>
-                    <td className="border-l border-r border-gray-300 text-center py-2 px-4">Pelajar Sekolah</td>
-                    <td className="border-l border-r border-gray-300 text-center py-2 px-4">2024</td>
+                  {tableData.value.map((rowData, index) => (
+
+                
+                  <tr key={index}>
+                    <td className="border-l border-r border-gray-300 text-center py-2 px-4">{index + 1}</td>
+                    {tableData.columns.map((name, colIndex) => (
+                      <td key={colIndex} className="border-l border-r border-gray-300 text-center py-2 px-4">{rowData[name]}</td>
+                    ))}
                   </tr>
+                    ))}
                 </tbody>
               </table>
 
