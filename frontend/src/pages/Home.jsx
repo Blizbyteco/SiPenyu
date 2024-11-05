@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import StatisticCard from "../components/Atoms/StatisticCard";
 import MacTerminal from "../components/MacTerminal";
 import { Line } from "react-chartjs-2";
@@ -26,7 +26,8 @@ ChartJS.register(
 );
 import { generateMessege } from "../utils/text";
 import BusinessIcon from "../components/SVG/BusinessIcon";
-import { extractDataColumnName } from "../utils/data";
+import OrganizationIcon from "../components/SVG/OrganizationIcon";
+import Pagination from "../components/Atoms/Pagination";
 
 
 export default function Home() {
@@ -45,40 +46,32 @@ export default function Home() {
   };
 
 
-  const [selectedAnalyticCategory, setSelectedAnalyticCategory] = useState()
 
-  const [tableData, setTableData] = useState({
-    columns: [],
-    value: [{}]
-  })
+  const [statisticData, setStatisticData] = useState({})
+  const [selectedAnalyticCategory, setSelectedAnalyticCategory] = useState()
   const [analyticData, setAnalyticData] = useState({
     labels: [],
     datasets: [],
   })
+
+
+  // Fetcher
+
+  const getStatisticData = async () => {
+    await fetch("https://api.sipenyumuda.biz.id/api/statistic")
+    .then(res => {
+      if (res.status == 200) {
+        return res.json()
+      }
+      return []
+    })
+    .then(data =>  setStatisticData(data.data))
+  }
   
   // Testing
   useEffect(() => {
 
-    setTableData(extractDataColumnName([
-      {
-        "kecamatan": "Proppo",
-        "Kategori": "Mahasiswa",
-        "Sub kategori": "Pelajar Sekolah",
-        "Tahun": "2024"
-      },
-      {
-        "kecamatan": "Proppo",
-        "Kategori": "Mahasiswa",
-        "Sub kategori": "Pelajar Sekolah",
-        "Tahun": "2024"
-      },
-      {
-        "kecamatan": "Proppo",
-        "Kategori": "Mahasiswa",
-        "Sub kategori": "Pelajar Sekolah",
-        "Tahun": "2024"
-      },
-    ]))
+    getStatisticData()
 
 
     setAnalyticData({
@@ -141,8 +134,9 @@ export default function Home() {
         </h1>
 
         <div className="mt-16 space-y-16">
-          <StatisticCard title="Jumlah Pemuda" icon={<YouthIcon />} value="98.030 Pemuda" />
-          <StatisticCard title="Jumlah Wirausaha" icon={<BusinessIcon />} value="98.030 Pemuda" />
+          <StatisticCard title="Jumlah Pemuda" icon={<YouthIcon />} value={`${statisticData.pemuda} Pemuda`} />
+          <StatisticCard title="Jumlah Wirausaha" icon={<BusinessIcon />} value={`${statisticData.wirausaha} Wirausaha`} />
+          <StatisticCard title="Jumlah Organisasi" icon={<OrganizationIcon />} value={`${statisticData.organisasi} Organisasi`} />
         </div>
       </section>
 
@@ -158,6 +152,7 @@ export default function Home() {
         </p>
         <div className="min-h-[70vh] h-max w-full bg-data-graphic bg-cover rounded-lg py-8 px-4 mt-12 space-y-12">
           {/* window background */}
+          <Pagination />
           <MacTerminal>
             <h2>Grafik berdasarkan kategori</h2>
             <select
@@ -173,56 +168,7 @@ export default function Home() {
           </MacTerminal>
           {/* window background */}
 
-          <MacTerminal>
-            <div className="grid grid-cols-1 gap-x-4 gap-y-4">
-              <input
-                type="text"
-                className="border-[1.5px] border-gray-300 rounded-md px-4 py-2 text-gray-500 text-sm col-span-2"
-                placeholder="Cari data bedasarkan kategori yang dipilih"
-              />
-              <select className="py-2 rounded-md px-4 text-sm text-gray-600">
-                <option value="">Kategori</option>
-              </select>
-              <button className="bg-secondary text-white rounded-md px-6 py-2 flex-1 col-span-2">
-                Cari
-              </button>
-            </div>
-
-            <div className="overflow-x-auto">
-              <table className="table-auto w-full mt-6 text-sm border border-gray-300">
-                <thead>
-                    <tr>
-                      <th className="text-center border-r border-l  border-gray-400 bg-gray-300 py-2 px-4 font-semibold">
-                        No
-                      </th>
-                    {tableData.columns.map((column, index) => (
-                      <th key={index} className="text-center border-r border-l  border-gray-400 bg-gray-300 py-2 px-4 font-semibold">
-                        {column}
-                      </th>
-                     ))}
-                    </tr>
-                </thead>
-                <tbody>
-                  {tableData.value.map((rowData, index) => (
-
-                
-                  <tr key={index}>
-                    <td className="border-l border-r border-gray-300 text-center py-2 px-4">{index + 1}</td>
-                    {tableData.columns.map((name, colIndex) => (
-                      <td key={colIndex} className="border-l border-r border-gray-300 text-center py-2 px-4">{rowData[name]}</td>
-                    ))}
-                  </tr>
-                    ))}
-                </tbody>
-              </table>
-
-              <div className="w-full flex items-center gap-x-4 mt-8">
-                {Array.from({length: 4}, (_, i) => (
-                  <button className="text-xs px-3 py-2 bg-gray-200 border border-gray-300">{i + 1}</button>
-                ))}
-              </div>
-            </div>
-          </MacTerminal>
+         
         </div>
       </section>
 
@@ -236,9 +182,9 @@ export default function Home() {
       </section>
 
       <section id="contact" className="w-full min-h-screen bg-secondary text-white text-center px-4 py-12">
-        <h1 className="font-semibold text-4xl text-center">Contact</h1>
+        <h1 className="font-semibold text-4xl text-center">Kontak kami</h1>
         <p className="mt-8 mb-12">
-        Pengguna  Si Penyu Muda Kabupaten Pamekasan dapat mengirimkan saran, masukan, kritikan dan informasi lainnya yang dapat membantu dalam pengembangan Si Penyu Muda Kabupaten Pamekasan.
+        Jangan segan untuk berkonsultasi tentang usaha atau keluh kesah anda kepada kami. tunggu apalagi? segera hubungi kami
         </p>
 
         <div className="space-y-6">
