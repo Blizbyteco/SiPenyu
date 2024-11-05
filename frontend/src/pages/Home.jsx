@@ -47,7 +47,11 @@ export default function Home() {
 
 
 
-  const [statisticData, setStatisticData] = useState({})
+  const [statisticData, setStatisticData] = useState({
+    pemuda: "-",
+    wirausaha: "-",
+    organisasi: "-",
+  })
   const [selectedAnalyticCategory, setSelectedAnalyticCategory] = useState()
   const [analyticData, setAnalyticData] = useState({
     labels: [],
