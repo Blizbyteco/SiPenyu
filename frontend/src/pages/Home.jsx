@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import StatisticCard from "../components/Atoms/StatisticCard";
 import MacTerminal from "../components/MacTerminal";
-import { Line } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import YouthIcon from "../components/SVG/YouthIcon";
 
 import {
@@ -13,6 +13,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  BarElement,
 } from "chart.js";
 
 ChartJS.register(
@@ -22,7 +23,8 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
+  BarElement
 );
 import { generateMessege } from "../utils/text";
 import BusinessIcon from "../components/SVG/BusinessIcon";
@@ -36,11 +38,23 @@ export default function Home() {
     responsive: true,
     plugins: {
       legend: {
-        position: "top",
+        display: true,
+        position: 'top',
       },
       title: {
         display: true,
-        text: "Status Pendidikan",
+        text: 'Data Pendidikan',
+      },
+    },
+    scales: {
+      x: {
+        display: true,
+      },
+      y: {
+        beginAtZero: true,
+        ticks: {
+          stepSize: 1
+        }
       },
     },
   };
@@ -71,39 +85,42 @@ export default function Home() {
     })
     .then(data =>  setStatisticData(data.data))
   }
+
+
+  const getAnalyticData = async () => {
+    await fetch("https://api.sipenyumuda.biz.id/api/statistic/education")
+      .then(res => {
+        if (res.status == 200) {
+          return res.json()
+        }
+      })
+      .then(data => {
+        if (data) {
+          const datasets = []
+
+          Object.keys(data.data).map(labelData => {
+            datasets.push(data.data[labelData])
+          })
+
+          setAnalyticData({
+            labels: Object.keys(data.data),
+            datasets: [{
+              label: 'Data Pendidikan',
+              data: datasets, // Single value for each label
+              backgroundColor: 'rgba(75, 192, 192, 0.6)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1,
+            }],
+          })
+        }
+      })
+  }
   
   // Testing
   useEffect(() => {
 
     getStatisticData()
-
-
-    setAnalyticData({
-      labels: ["Januari", "Februari", "Maret", "April", "May", "June"],
-      datasets: [
-        {
-          label: "Sekolah",
-          data: [30, 40, 35, 50, 55, 60],
-          fill: false,
-          borderColor: "rgb(75, 192, 192)",
-          tension: 0.1,
-        },
-        {
-          label: "Putus Sekolah",
-          data: [30, 40, 35, 50, 55, 60],
-          fill: false,
-          borderColor: "rgb(75, 192, 192)",
-          tension: 0.1,
-        },
-        {
-          label: "Mahasiswa",
-          data: [30, 40, 35, 50, 55, 60],
-          fill: false,
-          borderColor: "rgb(75, 192, 192)",
-          tension: 0.1,
-        },
-      ]
-    })
+    getAnalyticData()
   }, [])
 
 
@@ -165,10 +182,10 @@ export default function Home() {
               value={selectedAnalyticCategory}
               onChange={setSelectedAnalyticCategory}
             >
-              <option value="kepemudaan">Kepemudaan</option>
+              <option value="pendidikan">Pendidikan</option>
             </select>
 
-            <Line data={analyticData} options={options} className="mt-6" />
+            <Bar data={analyticData} options={options} className="mt-6" />
           </MacTerminal>
           {/* window background */}
 

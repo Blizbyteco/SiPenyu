@@ -8,6 +8,7 @@ export default function Pagination() {
 
     const [selectedTableCategory, setSelectedTableCategory] = useState()
     const [currentPage, setCurrentPage] = useState(1);
+    const [searchValue, setSearchValue] = useState("")
 
 
   const [tableData, setTableData] = useState({
@@ -50,6 +51,7 @@ export default function Pagination() {
           type="text"
           className="border-[1.5px] border-gray-300 rounded-md px-4 py-2 text-gray-500 text-sm col-span-2"
           placeholder="Filter data bedasarkan kategori yang dipilih"
+          onChange={setSearchValue}
         />
         <select
           value={selectedTableCategory}
@@ -57,7 +59,7 @@ export default function Pagination() {
           className="py-2 rounded-md px-4 text-sm text-gray-600"
           defaultValue=""
         >
-          <option value="">Pilih kategori data</option>
+          <option value="youth">Kepemudaan</option>
         </select>
         <select
           value={selectedTableCategory}
