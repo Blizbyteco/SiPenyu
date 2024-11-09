@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { extractDataColumnName } from "../../utils/data"
+import { cleanColumnName, extractDataColumnName } from "../../utils/data"
 import DoubleChevronLeft from "../SVG/DoubleChevronLeft"
 import DoubleChevronRight from "../SVG/DoubleChevronRight"
 import MacTerminal from "../MacTerminal";
+import { BASE_API } from "../../constants/api";
+
 
 export default function Pagination() {
 
-    const [selectedTableCategory, setSelectedTableCategory] = useState()
+    const [selectedTableCategory, setSelectedTableCategory] = useState("subdistrict")
     const [currentPage, setCurrentPage] = useState(1);
     const [searchValue, setSearchValue] = useState("")
 
@@ -17,9 +19,28 @@ export default function Pagination() {
   })
 
 
+  const handleCategoryChanges = async () => {
+    await fetch(`${BASE_API}/statistic/${selectedTableCategory}`)
+      .then(res => {
+        if (res.status == 200) {
+          return res.json()
+        }
+
+        return []
+      })
+      .then(data => setTableData(extractDataColumnName(data.data)))
+
+  }
+
+
   const handlePage = (id) => {
 
   }
+
+
+  useEffect(() => {
+    handleCategoryChanges()
+  }, [selectedTableCategory])
 
   useEffect(() => {
     setTableData(extractDataColumnName([
@@ -57,9 +78,8 @@ export default function Pagination() {
           value={selectedTableCategory}
           onChange={(e) => setSelectedTableCategory(e.target.value)}
           className="py-2 rounded-md px-4 text-sm text-gray-600"
-          defaultValue=""
         >
-          <option value="youth">Kepemudaan</option>
+          <option value="subdistrict">Kecamatan</option>
         </select>
         <select
           value={selectedTableCategory}
@@ -90,7 +110,7 @@ export default function Pagination() {
                   key={index}
                   className="text-center border-r border-l  border-gray-400 bg-gray-300 py-2 px-4 font-semibold"
                 >
-                  {column}
+                  {cleanColumnName(column)}
                 </th>
               ))}
             </tr>
