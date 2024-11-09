@@ -227,7 +227,7 @@ export default function Home() {
               <p>Email    : statistik@pamekasankab.go.id</p>
               <p>Lokasi   : Jl. Darma No.12, Taman, Lawangan Daya, Kec. Pademawu, Kabupaten Pamekasan, Jawa Timur 69323</p>
           </div>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3958.6998424832036!2d113.4927466!3d-7.1606578!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd77deedfa7e05b%3A0xf65af701caa3372c!2sKantor%20DISPORAPAR%20Kab.%20Pamekasan!5e0!3m2!1sen!2sid!4v1728703419630!5m2!1sen!2sid" width="600" height="450" className="border-none rounded-md max-w-full mt-4" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3958.6998424832036!2d113.4927466!3d-7.1606578!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd77deedfa7e05b%3A0xf65af701caa3372c!2sKantor%20DISPORAPAR%20Kab.%20Pamekasan!5e0!3m2!1sen!2sid!4v1728703419630!5m2!1sen!2sid" className="border-none rounded-md w-full mt-4 h-[450px]" allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
         </MacTerminal>
         </div>
       </section>
