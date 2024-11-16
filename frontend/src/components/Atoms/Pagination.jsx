@@ -11,7 +11,8 @@ export default function Pagination() {
     const [selectedTableCategory, setSelectedTableCategory] = useState("subdistrict")
     const [currentPage, setCurrentPage] = useState(1);
     const [searchValue, setSearchValue] = useState("")
-
+    const [filter, setFilter] = useState("")
+    const [_, setForceUpdate] = useState(false)
 
   const [tableData, setTableData] = useState({
     columns: [],
@@ -28,7 +29,9 @@ export default function Pagination() {
 
         return []
       })
-      .then(data => setTableData(extractDataColumnName(data.data)))
+      .then(data => {
+
+        setTableData(extractDataColumnName(data.data))})
 
   }
 
@@ -36,6 +39,11 @@ export default function Pagination() {
   const handlePage = (id) => {
 
   }
+
+
+  useEffect(() => {
+    setForceUpdate(state => !state)
+  }, [searchValue, filter])
 
 
   useEffect(() => {
@@ -51,16 +59,16 @@ export default function Pagination() {
           "Tahun": "2024"
         },
         {
-          "kecamatan": "Proppo",
-          "Kategori": "Mahasiswa",
+          "kecamatan": "Palengaan",
+          "Kategori": "Siswa",
           "Sub kategori": "Pelajar Sekolah",
-          "Tahun": "2024"
+          "Tahun": "2025"
         },
         {
-          "kecamatan": "Proppo",
-          "Kategori": "Mahasiswa",
+          "kecamatan": "Pamekasan",
+          "Kategori": "SD",
           "Sub kategori": "Pelajar Sekolah",
-          "Tahun": "2024"
+          "Tahun": "2026"
         },
       ]))
   }, [])
@@ -72,7 +80,7 @@ export default function Pagination() {
           type="text"
           className="border-[1.5px] border-gray-300 rounded-md px-4 py-2 text-gray-500 text-sm col-span-2"
           placeholder="Filter data bedasarkan kategori yang dipilih"
-          onChange={setSearchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
         />
         <select
           value={selectedTableCategory}
@@ -80,10 +88,12 @@ export default function Pagination() {
           className="py-2 rounded-md px-4 text-sm text-gray-600"
         >
           <option value="subdistrict">Kecamatan</option>
+          <option value="organization">Organisasi</option>
+          <option value="business">Wirausaha</option>
         </select>
         <select
-          value={selectedTableCategory}
-          onChange={(e) => setSelectedTableCategory(e.target.value)}
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
           className="py-2 rounded-md px-4 text-sm text-gray-600"
         >
           <option value="">Filter bedasarkan nama</option>
@@ -93,9 +103,6 @@ export default function Pagination() {
             </option>
           ))}
         </select>
-        <button className="bg-secondary text-white rounded-md px-6 py-2 flex-1 col-span-2">
-          Cari
-        </button>
       </div>
 
       <div className="overflow-x-auto py-6">
@@ -116,17 +123,22 @@ export default function Pagination() {
             </tr>
           </thead>
           <tbody>
-            {tableData.value.map((rowData, index) => (
+            {tableData.value.filter(data => {
+              
+              if (!data[filter] || searchValue == "") return true
+
+              return data[filter].toLowerCase().includes(searchValue.toLowerCase())
+            }).map((rowData, index) => (
               <tr key={index}>
                 <td className="border-l border-r border-gray-300 text-center py-2 px-4">
                   {index + 1}
                 </td>
-                {tableData.columns.map((name, colIndex) => (
+                {Object.keys(rowData).map((key, colIndex) => (
                   <td
                     key={colIndex}
                     className="border-l border-r border-gray-300 text-center py-2 px-4"
                   >
-                    {rowData[name]}
+                    {rowData[key]}
                   </td>
                 ))}
               </tr>
