@@ -42,6 +42,8 @@ export default function Pagination() {
 
 
   useEffect(() => {
+
+    // Change to fetch data to the server
     setForceUpdate(state => !state)
   }, [searchValue, filter])
 
@@ -52,25 +54,18 @@ export default function Pagination() {
 
   useEffect(() => {
     setTableData(extractDataColumnName([
-        {
-          "kecamatan": "Proppo",
-          "Kategori": "Mahasiswa",
-          "Sub kategori": "Pelajar Sekolah",
-          "Tahun": "2024"
-        },
-        {
-          "kecamatan": "Palengaan",
-          "Kategori": "Siswa",
-          "Sub kategori": "Pelajar Sekolah",
-          "Tahun": "2025"
-        },
-        {
-          "kecamatan": "Pamekasan",
-          "Kategori": "SD",
-          "Sub kategori": "Pelajar Sekolah",
-          "Tahun": "2026"
-        },
-      ]))
+  { kecamatan: "Kecamatan 1", Kategori: "Mahasiswa", "Sub kategori": "Pelajar Sekolah", Tahun: "2024" },
+  { kecamatan: "Kecamatan 2", Kategori: "Mahasiswa", "Sub kategori": "Pelajar Sekolah", Tahun: "2024" },
+  { kecamatan: "Kecamatan 3", Kategori: "Mahasiswa", "Sub kategori": "Pelajar Sekolah", Tahun: "2024" },
+  { kecamatan: "Kecamatan 4", Kategori: "Mahasiswa", "Sub kategori": "Pelajar Sekolah", Tahun: "2024" },
+  { kecamatan: "Kecamatan 5", Kategori: "Mahasiswa", "Sub kategori": "Pelajar Sekolah", Tahun: "2024" },
+  { kecamatan: "Kecamatan 6", Kategori: "Mahasiswa", "Sub kategori": "Pelajar Sekolah", Tahun: "2024" },
+  { kecamatan: "Kecamatan 7", Kategori: "Mahasiswa", "Sub kategori": "Pelajar Sekolah", Tahun: "2024" },
+  { kecamatan: "Kecamatan 8", Kategori: "Mahasiswa", "Sub kategori": "Pelajar Sekolah", Tahun: "2024" },
+  { kecamatan: "Kecamatan 9", Kategori: "Mahasiswa", "Sub kategori": "Pelajar Sekolah", Tahun: "2024" },
+  { kecamatan: "Kecamatan 10", Kategori: "Mahasiswa", "Sub kategori": "Pelajar Sekolah", Tahun: "2024" }
+]
+))
   }, [])
 
   return (
@@ -109,9 +104,6 @@ export default function Pagination() {
         <table className="table-auto w-full mt-6 text-sm border border-gray-300">
           <thead>
             <tr>
-              <th className="text-center border-r border-l  border-gray-400 bg-gray-300 py-2 px-4 font-semibold">
-                No
-              </th>
               {tableData.columns.map((column, index) => (
                 <th
                   key={index}
@@ -123,16 +115,16 @@ export default function Pagination() {
             </tr>
           </thead>
           <tbody>
-            {tableData.value.filter(data => {
+            {searchValue != ""&selectedTableCategory != "" ? 
+            tableData.value.filter(data => {
               
               if (!data[filter] || searchValue == "") return true
+
+              // console.log(`Compare = ${data[filter].toLowerCase()} ${searchValue.toLowerCase()}, res = ${data[filter].toLowerCase().includes(searchValue.toLowerCase())}`)
 
               return data[filter].toLowerCase().includes(searchValue.toLowerCase())
             }).map((rowData, index) => (
               <tr key={index}>
-                <td className="border-l border-r border-gray-300 text-center py-2 px-4">
-                  {index + 1}
-                </td>
                 {Object.keys(rowData).map((key, colIndex) => (
                   <td
                     key={colIndex}
@@ -142,7 +134,22 @@ export default function Pagination() {
                   </td>
                 ))}
               </tr>
-            ))}
+            ))
+            :
+            tableData.value.slice((currentPage - 1) * 5, ((currentPage - 1) * 5) + 5).map((rowData, index) => (
+              <tr key={index}>
+                {Object.keys(rowData).map((key, colIndex) => (
+                  <td
+                    key={colIndex}
+                    className="border-l border-r border-gray-300 text-center py-2 px-4"
+                  >
+                    {rowData[key]}
+                  </td>
+                ))}
+              </tr>
+            ))
+
+          }
           </tbody>
         </table>
 
@@ -150,7 +157,7 @@ export default function Pagination() {
             <button className="text-xs px-3 py-2 bg-gray-200 border border-gray-300">
                 <DoubleChevronLeft />
             </button>
-          {Array.from({ length: 7 }, (_, i) => (
+          {Array.from({ length: Math.floor(tableData.value.length / 5) }, (_, i) => (
             <button key={i} onClick={() => setCurrentPage(i + 1)} className={`text-xs px-3 py-2 bg-gray-200 border border-gray-300 ${currentPage == i + 1 ? 'bg-secondary text-white' : ''}`}>
               {i + 1}
             </button>
