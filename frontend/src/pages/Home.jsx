@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import StatisticCard from "../components/Atoms/StatisticCard";
+import StatisticCard from "../components/Atoms/StatisticCard"
 import MacTerminal from "../components/MacTerminal";
 import { Bar } from "react-chartjs-2";
 import YouthIcon from "../components/SVG/YouthIcon";
@@ -142,22 +142,29 @@ export default function Home() {
   return (
     <div>
       {/* hero section */}
-      <section id="beranda" className="w-full bg-hero h-screen bg-cover bg-fixed bg-no-repeat py-6 flex flex-col justify-center items-center text-4xl font-semibold space-y-2 px-4">
-        <h1>
-        <span className="text-secondary">Sistem</span> informasi penyusunan data <span className="text-primary">kepemudaan</span>
+      <section id="beranda" className="w-full relative bg-hero h-screen bg-cover bg-fixed bg-no-repeat py-6 flex flex-col justify-center items-center text-4xl font-semibold space-y-2 px-4 bg-[url('/hero-bg.jpg')]">
+        <div className="absolute left-0 top-0 bg-black z-10 w-screen h-screen bg-opacity-75"></div> 
+        <h1 className="text-white z-20">
+        Sistem Informasi penyusunan data kepemudaan
         </h1>
       </section>
 
       {/* statistic section */}
-      <section id="statistik" className="bg-grid-mobile bg-cover bg-fixed bg-center min-h-screen py-12 px-4">
+      <section id="statistik" className="flex bg-cover bg-fixed bg-center min-h-screen py-12 px-4">
+        <div className="flex-1">
+          <h1 className="text-3xl text-center font-semibold">
+            Statistik Pemuda
+          </h1>
+          <div className="mt-16 space-y-16">
+            <StatisticCard title="Jumlah Pemuda" icon={<YouthIcon />} value={`${statisticData.pemuda} Pemuda`} />
+            <StatisticCard title="Jumlah Wirausaha" icon={<BusinessIcon />} value={`${statisticData.wirausaha} Wirausaha`} />
+            <StatisticCard title="Jumlah Organisasi" icon={<OrganizationIcon />} value={`${statisticData.organisasi} Organisasi`} />
+          </div>
+        </div>
+        <div className="w-[800px]">
         <h1 className="text-3xl text-center font-semibold">
-          Statistik Pemuda Kabupaten Pamekasan
-        </h1>
-
-        <div className="mt-16 space-y-16">
-          <StatisticCard title="Jumlah Pemuda" icon={<YouthIcon />} value={`${statisticData.pemuda} Pemuda`} />
-          <StatisticCard title="Jumlah Wirausaha" icon={<BusinessIcon />} value={`${statisticData.wirausaha} Wirausaha`} />
-          <StatisticCard title="Jumlah Organisasi" icon={<OrganizationIcon />} value={`${statisticData.organisasi} Organisasi`} />
+            Peta
+          </h1>
         </div>
       </section>
 
