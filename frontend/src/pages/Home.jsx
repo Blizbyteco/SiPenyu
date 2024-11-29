@@ -32,6 +32,8 @@ import OrganizationIcon from "../components/SVG/OrganizationIcon";
 import Pagination from "../components/Atoms/Pagination";
 
 
+
+
 export default function Home() {
 
   const options = {
@@ -139,12 +141,15 @@ export default function Home() {
   }
 
 
+  
+
+
   return (
     <div>
       {/* hero section */}
-      <section id="beranda" className="w-full relative bg-hero h-screen bg-cover bg-fixed bg-no-repeat py-6 flex flex-col justify-center items-center text-4xl font-semibold space-y-2 px-4 bg-[url('/hero-bg.jpg')]">
-        <div className="absolute left-0 top-0 bg-black z-10 w-screen h-screen bg-opacity-75"></div> 
-        <h1 className="text-white z-20">
+      <section id="beranda" className="w-full relative bg-hero h-screen bg-cover bg-fixed bg-no-repeat flex flex-col justify-center items-center lg:items-start lg:justify-end text-4xl font-semibold space-y-2 bg-[url('/hero-bg.jpeg')]">
+        <div className="absolute left-0 top-0 bg-black w-screen h-screen bg-opacity-80"></div> 
+        <h1 className="absolute left-4 bottom-24 text-white font-bold z-20 lg:text-6xl lg:max-w-[1000px]">
         Sistem Informasi penyusunan data kepemudaan
         </h1>
       </section>
@@ -155,16 +160,11 @@ export default function Home() {
           <h1 className="text-3xl text-center font-semibold">
             Statistik Pemuda
           </h1>
-          <div className="mt-16 space-y-16">
+          <div className="mt-16 grid grid-cols-2 gap-y-16 max-w-[1200px] mx-auto">
             <StatisticCard title="Jumlah Pemuda" icon={<YouthIcon />} value={`${statisticData.pemuda} Pemuda`} />
             <StatisticCard title="Jumlah Wirausaha" icon={<BusinessIcon />} value={`${statisticData.wirausaha} Wirausaha`} />
             <StatisticCard title="Jumlah Organisasi" icon={<OrganizationIcon />} value={`${statisticData.organisasi} Organisasi`} />
           </div>
-        </div>
-        <div className="w-[800px]">
-        <h1 className="text-3xl text-center font-semibold">
-            Peta
-          </h1>
         </div>
       </section>
 

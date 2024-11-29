@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import Sidebar from "../components/Sidebar";
 import { Outlet, useLocation } from "react-router-dom";
+import { useMotionValueEvent, useScroll } from "framer-motion";
 
 export default function RootLayout() {
 
@@ -19,10 +20,32 @@ export default function RootLayout() {
     setSidebarOpened(false)
   }, [location])
 
+  // handle scrolling effect
+  const [isScrolling, setIsScrolling] = useState(false)
+  const { scrollY } = useScroll()
+
+  useMotionValueEvent(scrollY, "change", (y) => {
+    if (y > 50) {
+      setIsScrolling(true)
+    }else if (location.pathname == "/") {
+      setIsScrolling(false)
+    }
+  })
+
+
+  useMemo(() => {
+    if (location.pathname == "/") {
+      setIsScrolling(false)
+    } else {
+      setIsScrolling(true)
+    }
+  }, [location.pathname])
+
+
   return (
     <>
       <Sidebar sidebarOpened={sidebarOpened} setSidebarOpened={setSidebarOpened} />
-      <div className="sticky top-0 left-0 w-full flex justify-between items-center px-4 py-6 bg-white">
+      <div className={`fixed z-30 top-0 left-0 w-full flex justify-between items-center px-4 py-6 ease-in duration-200  ${isScrolling ? "text-black bg-white" : "text-white bg-opacity-0"}`}>
         <h1 className="">{title}</h1>
         <button onClick={() => setSidebarOpened(true)}>
           <svg
@@ -30,7 +53,7 @@ export default function RootLayout() {
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
-            stroke="black"
+            stroke={isScrolling ? 'black' : 'white'}
             className="size-6"
           >
             <path

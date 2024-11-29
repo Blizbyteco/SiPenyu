@@ -29,7 +29,7 @@ export default function Sidebar({sidebarOpened, setSidebarOpened}) {
     initial='hidden'
     animate={sidebarOpened ? 'show' : 'hidden'}
     variants={sidebarVariants}
-    className="w-full fixed h-screen z-10 bg-black text-white">
+    className="w-full fixed z-50 h-screen bg-black text-white">
       <div className="w-full flex justify-end p-6 flex-grow-0  text-white">
         <button className="hover:cursor-pointer" onClick={() => setSidebarOpened(false)}>
             <svg
@@ -56,7 +56,6 @@ export default function Sidebar({sidebarOpened, setSidebarOpened}) {
           <a href="/#data" className="hover:cursor-pointer">Data</a>
           <a href="/#about" className="hover:cursor-pointer">Tentang</a>
           <a href="/#contact" className="hover:cursor-pointer">Kontak</a>
-          <Link to="/downloads" className="hover:cursor-pointer">Download</Link>
       </div>
     </motion.div>
   );
