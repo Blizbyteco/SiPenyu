@@ -7,7 +7,7 @@ import Resources from './pages/Resources'
 
 export default function App() {
   return (
-    <BrowserRouter basename='/SiPenyu'>
+    <BrowserRouter>
       <Routes>
         <Route path='/' element={<RootLayout />}>
             <Route path='/' element={<Home />} />
